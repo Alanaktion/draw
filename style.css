@@ -8,6 +8,39 @@ body {
     background-color: #000;
     color: #888;
 }
+
+.lines-college {
+    background-image: linear-gradient(
+        to bottom,
+        transparent,
+        transparent 97%,
+        #7ac 97%,
+        #7ac
+    );
+    background-size: 100% 0.28125in; /* US College ruled */
+}
+.lines-wide {
+    background-image: linear-gradient(
+        to bottom,
+        transparent,
+        transparent 97%,
+        #7ac 97%,
+        #7ac
+    );
+    background-size: 100% 0.34375in; /* US Wide ruled */
+}
+.lines-huge {
+    /* todo: tweak this percentage to make the lines crisp */
+    background-image: linear-gradient(
+        to bottom,
+        transparent,
+        transparent 97.7%,
+        #7ac 97.7%,
+        #7ac
+    );
+    background-size: 100% 0.5in; /* US Pitman ruled */
+}
+
 main {
     width: 100vw;
     height: 100vh;
@@ -15,19 +48,19 @@ main {
     overflow: hidden;
 }
 
-nav {
+.nav-main {
     position: absolute;
     top: 8px;
     left: 8px;
     right: 8px;
     z-index: 2;
 }
-nav:after {
+.nav-main:after {
     content: '';
     display: table;
     clear: both;
 }
-nav button {
+.nav-main button {
     float: left;
     background-color: transparent;
     border: none;
@@ -35,28 +68,82 @@ nav button {
     opacity: 0.8;
     cursor: pointer;
 }
-nav button:hover,
-nav button:focus,
-nav button:active {
+.nav-main button:hover,
+.nav-main button:focus,
+.nav-main button:active {
     opacity: 1;
 }
-nav button[disabled],
-nav button:disabled {
+.nav-main button[disabled],
+.nav-main button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
-nav button svg {
+.nav-main button svg {
     width: 32px;
     height: 32px;
     fill: none;
     stroke: #000000;
     stroke-width: 2;
 }
-.night nav button svg {
+.night .nav-main button svg {
     stroke: #dddddd;
 }
-nav .right {
+.nav-main .right {
     float: right;
+}
+
+.popover {
+    position: absolute;
+    display: none;
+    top: 45px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    z-index: 2;
+    border-radius: 3px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+.popover:before {
+    position: absolute;
+    top: -5px;
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-color: #aaa;
+    border-width: 1px 0 0 1px;
+    border-style: solid;
+    transform: rotate(45deg);
+}
+.night .popover,
+.night .popover:before {
+    background-color: #222;
+    border-color: #444;
+    color: #ccc;
+}
+.popover.in {
+    display: block;
+}
+.popover .title {
+    margin-bottom: 3px;
+    text-align: center;
+}
+.popover label {
+    display: block;
+    padding-right: 5px;
+}
+
+.popover[data-menu=pages] {
+    left: 15px;
+}
+.popover[data-menu=pages]:before {
+    left: 13px;
+}
+.popover[data-menu=lines] {
+    right: 15px;
+}
+.popover[data-menu=lines]:before {
+    right: 13px;
 }
 
 #page {

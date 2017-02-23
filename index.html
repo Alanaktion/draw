@@ -8,30 +8,30 @@
 </head>
 <body>
     <main>
-        <nav>
-            <!--<button data-action="menu" title="Menu">
+        <nav class="nav-main">
+            <!--<button type="button" data-action="menu" title="Menu">
                 <svg viewBox="0 0 32 32">
                     <path d="M6 10 L26 10 M6 16 L26 16 M6 22 L26 22" />
                 </svg>
             </button>-->
-            <button data-action="pages" title="Pages">
+            <button type="button" data-toggle="pages" title="Pages">
                 <svg viewBox="0 0 32 32">
                     <path d="M8,8 18,8 18,22 8,22 Z M22,12 22,26 12,26" />
                 </svg>
             </button>
-            <button data-action="undo" title="Undo">
+            <button type="button" data-action="undo" title="Undo">
                 <svg viewBox="0 0 32 32">
                     <path d="m12,9 -5,5 5,5" />
                     <path d="m7,14 13,0 a4,4 0 0 1 0,8 l-2,0" />
                 </svg>
             </button>
-            <button data-action="clear" title="Clear">
+            <button type="button" data-action="clear" title="Clear">
                 <svg viewBox="0 0 32 32">
                     <path d="M10,10 22,22 M22,10 10,22" />
                 </svg>
             </button>
             <div class="right">
-                <button data-action="night" title="Night Mode">
+                <button type="button" data-action="night" title="Night Mode">
                     <svg viewBox="0 0 32 32">
                         <g transform="translate(2,2)">
                             <path d="M15,1 15,5 M1,15 5,15 M5,5 8,8" />
@@ -39,8 +39,38 @@
                         </g>
                     </svg>
                 </button>
+                <button type="button" data-toggle="lines" title="Lines">
+                    <svg viewBox="0 0 32 32">
+                        <path d="M6 10 L26 10 M6 16 L26 16 M6 22 L26 22" />
+                    </svg>
+                </button>
+                <!--<button type="button" data-action="toggle-lines" title="Toggle Lines">
+                    <svg viewBox="0 0 32 32">
+                        <path d="M2 10 L16 10 M2 16 L10 16 M2 22 L5 22"></path>
+                        <path d="M21,8 5,26"></path>
+                    </svg>
+                </button>-->
             </div>
         </nav>
+        <aside class="popover" data-menu="pages">
+            <div class="title">Pages</div>
+            Coming Soon!
+        </aside>
+        <aside class="popover" data-menu="lines">
+            <div class="title">Line Style</div>
+            <label>
+                <input type="radio" name="lines" value=""> None
+            </label>
+            <label>
+                <input type="radio" name="lines" value="college" checked> College
+            </label>
+            <label>
+                <input type="radio" name="lines" value="wide"> Wide
+            </label>
+            <label>
+                <input type="radio" name="lines" value="huge"> Huge
+            </label>
+        </aside>
         <svg id="page">
             <polyline id="pencil-path" class="stroke" />
             <rect id="pencil-point" width="1" height="1" />

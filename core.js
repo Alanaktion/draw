@@ -3,11 +3,10 @@
 // the entire TweenMax + Draggable from GreenSock. It's kinda overkill for this.
 (() => {
     var App = {};
-
-    var svg = document.querySelector("#page");
-
     App.pages = []; // Arrays of path element drawing instructions
     App.paths = []; // Current page path element drawing instructions
+
+    var svg = document.querySelector("#page");
 
     // Append a <path> element with an SVG d attribute value
     App.drawPath = function(path) {
@@ -18,14 +17,14 @@
         document.querySelector('button[data-action=undo]').disabled = false;
         document.querySelector('button[data-action=clear]').disabled = false;
         return el;
-    }
+    };
 
     // Remove last path
     // @todo: Support undoing a clear()
     App.undo = function() {
         var lastPath = svg.querySelector('path:last-of-type');
         if (lastPath) lastPath.remove();
-    }
+    };
 
     // Remove all paths from current page
     // @todo: Don't disable undo once it supports undoing a clear
@@ -37,13 +36,13 @@
         document.querySelector('button[data-action=undo]').disabled = true;
         document.querySelector('button[data-action=clear]').disabled = true;
         localStorage.removeItem('drawapp.paths');
-    }
+    };
 
     // Write path data to local storage
     // @todo: Store pages
     App.save = function() {
         localStorage.setItem('drawapp.paths', JSON.stringify(App.paths));
-    }
+    };
 
     // Read path data from local storage
     // @todo: Read pages
@@ -56,7 +55,7 @@
             document.querySelector('button[data-action=clear]').disabled = true;
         }
         App.paths.forEach(App.drawPath);
-    }
+    };
 
     // Toggle UI night mode
     // Returns true if night mode is enabled, false if it's disabled
@@ -68,7 +67,19 @@
             document.body.className = (document.body.className + ' night').trim();
             return true;
         }
-    }
+    };
+
+    // Toggle a popover by name
+    App.togglePopover = function(name) {
+        var el = document.querySelector('.popover[data-menu=' + name + ']');
+        if(el.className.indexOf('in') != -1) {
+            el.className = el.className.replace('in', '').trim();
+            return false;
+        } else {
+            el.className = (el.className + ' in').trim();
+            return true;
+        }
+    };
 
     // Restore last drawing on load
     window.addEventListener('load', () => {
@@ -99,6 +110,13 @@
     // Bind night mode button
     document.querySelector('button[data-action=night]').addEventListener('click', () => {
         localStorage.setItem('drawapp.night', App.toggleNightMode() ? 1 : 0);
+    });
+
+    // Bind popover toggle buttons
+    document.querySelectorAll('button[data-toggle]').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            App.togglePopover(e.target.getAttribute('data-toggle'));
+        });
     });
 
     // Bind save button/ctrl+s
