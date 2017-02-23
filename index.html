@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Draw</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <nav>
+            <!--<button data-action="menu" title="Menu">
+                <svg viewBox="0 0 32 32">
+                    <path d="M6 10 L26 10 M6 16 L26 16 M6 22 L26 22" />
+                </svg>
+            </button>-->
+            <button data-action="pages" title="Pages">
+                <svg viewBox="0 0 32 32">
+                    <path d="M8,8 18,8 18,22 8,22 Z M22,12 22,26 12,26" />
+                </svg>
+            </button>
+            <button data-action="undo" title="Undo">
+                <svg viewBox="0 0 32 32">
+                    <path d="m12,9 -5,5 5,5" />
+                    <path d="m7,14 13,0 c 0,0 7,0 7,5 0,5 -7,5 -7,5" />
+                </svg>
+            </button>
+            <button data-action="clear" title="Clear">
+                <svg viewBox="0 0 32 32">
+                    <path d="M10,10 22,22 M22,10 10,22" />
+                </svg>
+            </button>
+            <div class="right">
+                <button data-action="night" title="Night Mode">
+                    <svg viewBox="0 0 32 32">
+                        <g transform="translate(2,2)">
+                            <path d="M15,1 15,5 M1,15 5,15 M5,5 8,8" />
+                            <path d="M20,10 A6,6 0 0 0 10,20 M24,6 6,24" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <svg id="page">
+            <polyline id="pencil-path" class="stroke" />
+            <rect id="pencil-point" width="1" height="1" />
+        </svg>
+    </main>
+    <script src="bower_components/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="bower_components/gsap/src/minified/utils/Draggable.min.js"></script>
+    <script src="core.js"></script>
+</body>
+</html>
