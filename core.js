@@ -36,19 +36,19 @@
         });
         document.querySelector('button[data-action=undo]').disabled = true;
         document.querySelector('button[data-action=clear]').disabled = true;
-        localStorage.removeItem('paths');
+        localStorage.removeItem('drawapp.paths');
     }
 
     // Write path data to local storage
     // @todo: Store pages
     App.save = function() {
-        localStorage.setItem('paths', JSON.stringify(App.paths));
+        localStorage.setItem('drawapp.paths', JSON.stringify(App.paths));
     }
 
     // Read path data from local storage
     // @todo: Read pages
     App.load = function() {
-        var pathJSON = localStorage.getItem('paths');
+        var pathJSON = localStorage.getItem('drawapp.paths');
         if (pathJSON) {
             App.paths = JSON.parse(pathJSON);
         } else {
@@ -61,8 +61,8 @@
     // Toggle UI night mode
     // Returns true if night mode is enabled, false if it's disabled
     App.toggleNightMode = function() {
-        if(document.body.className.indexOf('night') != -1) {
-            document.body.className = document.body.className.replace('night', '').trim();
+        if(document.body.className.indexOf('drawapp.night') != -1) {
+            document.body.className = document.body.className.replace('drawapp.night', '').trim();
             return false;
         } else {
             document.body.className = (document.body.className + ' night').trim();
@@ -73,7 +73,7 @@
     // Restore last drawing on load
     window.addEventListener('load', () => {
         App.load();
-        if(localStorage.getItem('night') == 1) {
+        if(localStorage.getItem('drawapp.night') == 1) {
             App.toggleNightMode();
         }
     });
@@ -98,7 +98,7 @@
 
     // Bind night mode button
     document.querySelector('button[data-action=night]').addEventListener('click', () => {
-        localStorage.setItem('night', App.toggleNightMode() ? 1 : 0);
+        localStorage.setItem('drawapp.night', App.toggleNightMode() ? 1 : 0);
     });
 
     // Bind save button/ctrl+s
