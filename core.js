@@ -61,8 +61,8 @@
     // Toggle UI night mode
     // Returns true if night mode is enabled, false if it's disabled
     App.toggleNightMode = function() {
-        if(document.body.className.indexOf('drawapp.night') != -1) {
-            document.body.className = document.body.className.replace('drawapp.night', '').trim();
+        if(document.body.className.indexOf('night') != -1) {
+            document.body.className = document.body.className.replace('night', '').trim();
             return false;
         } else {
             document.body.className = (document.body.className + ' night').trim();
