@@ -91,8 +91,9 @@
 
     // Bind ctrl+z to undo()
     document.addEventListener('keydown', (e) => {
-        var evtobj = window.event || e
-        if (evtobj.keyCode == 90 && evtobj.ctrlKey) App.undo();
+        var evt = window.event || e;
+        if (evt.keyCode == 90 && (evt.ctrlKey || evt.metaKey)) App.undo();
+        e.preventDefault(); // Safari uses ⌘Z to re-open tabs
     });
 
     // Bind menu button
